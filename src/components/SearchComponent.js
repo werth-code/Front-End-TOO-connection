@@ -1,6 +1,6 @@
 import React from 'react'
 import UserService from '../services/UserService'
-import { InputGroup, Card, Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 export default class SearchComponent extends React.Component {
   constructor(props) {
@@ -13,11 +13,8 @@ export default class SearchComponent extends React.Component {
   }
 
 
-  handleInputChanged(event) { // on a change event we want to set the state to the value inside the form..
-      this.setState({
-          searchQuery: event.target.value
-      })
-      this.componentDidMount()
+  handleInputChanged(event) { // on a change event we want to set the state to the value inside the form..the callback keeps it in sync!
+      this.setState({ searchQuery: event.target.value }, () => this.componentDidMount())
   }
 
 //   handleButtonClicked() {
