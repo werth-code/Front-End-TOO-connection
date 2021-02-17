@@ -1,6 +1,6 @@
 import React from 'react'
 import UserService from '../services/UserService'
-import { Card, Button } from 'react-bootstrap';
+import { InputGroup, Card, Button } from 'react-bootstrap';
 
 export default class SearchComponent extends React.Component {
   constructor(props) {
@@ -38,7 +38,8 @@ export default class SearchComponent extends React.Component {
 
         if(plant.image_url === null) plant.image_url ="https://www.gardeningknowhow.com/wp-content/uploads/2013/12/leaf-curl.jpg"
 
-            return <Card key={plant.id} style={{border: '1px solid black', width: '25rem', padding: '20px', margin: '0 auto'}}>
+            return <div style={{margin: '10px'}}>
+                    <Card key={plant.id} style={{border: '1px solid black', width: '25rem', padding: '20px', margin: '0 auto'}}>
                     <Card.Img variant="top" src={plant.image_url} style={{ width: '250px' }}/>
                     <Card.Body>
                         <Card.Title style={{ fontWeight: 'bold' }}>{plant.common_name}</Card.Title>
@@ -49,16 +50,18 @@ export default class SearchComponent extends React.Component {
                         <Button variant="primary">Select</Button>
                     </Card.Body>
                     </Card>
+                    </div>
     })
 
     return  (
       <div>
-        <input type="text" value={this.state.searchQuery} onChange={this.handleInputChanged.bind(this)}/>
+        <h1 style={{margin: '0 auto'}}>Plants</h1>
+        <input type="text" value={this.state.searchQuery} onChange={this.handleInputChanged.bind(this)} style={{ margin: '10px' }}/>
         {/* <button onClick={this.handleButtonClicked.bind(this)}> */}
         <button>
           Search
         </button>
-        {plantCard}
+       {plantCard}
       </div>
     );
   }
